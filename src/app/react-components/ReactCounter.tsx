@@ -18,11 +18,11 @@ const Counter: React.FC = () => {
     };
 
     return (
-        <div>
+        <div style={{"backgroundColor": "red"}}>
             <h2>React Counter</h2>
             <p>Count: {counter}</p>
-            <button onClick={increment}>Increment by react</button>
-            <button onClick={decrement}>Decrement by react</button>
+            <button style={{"padding": "1rem", "marginBottom": "10px", "marginLeft": "10px"}} onClick={increment}>Increment by react</button>
+            <button style={{"padding": "1rem", "marginBottom": "10px", "marginLeft": "10px"}} onClick={decrement}>Decrement by react</button>
         </div>
     );
 };

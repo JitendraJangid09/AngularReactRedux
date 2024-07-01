@@ -9,10 +9,10 @@ import store from './store/store';
 @Component({
   selector: 'app-root',
   template: `
-    <div style="text-align:center">
+    <div style="text-align:center; background-color: green; padding: 1rem">
       <h1>Angular + React + Redux</h1>
-      <div #reactContainer></div>
-      <button (click)="decrement()">Decrement by angular</button>
+      <div #reactContainer style="padding: 1rem"></div>
+      <button (click)="decrement()" style="padding: 1rem">Decrement by angular</button>
     </div>
   `,
   styles: [],
