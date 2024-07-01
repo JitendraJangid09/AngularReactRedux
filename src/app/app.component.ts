@@ -1,17 +1,46 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { render } from 'react-dom';
+// src/app/app.component.ts
+
+import { Component, ElementRef, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
+import ReactDOM from 'react-dom';
+import React from 'react';
 import ReactCounter from './react-components/ReactCounter';
 import store from './store/store';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+    <div style="text-align:center">
+      <h1>Angular + React + Redux</h1>
+      <div #reactContainer></div>
+      <button (click)="decrement()">Decrement by angular</button>
+    </div>
+  `,
+  styles: [],
+  standalone: true
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit, OnDestroy {
+
+  @ViewChild('reactContainer', { static: true }) reactContainer!: ElementRef<HTMLDivElement>;
+
+  constructor(private elementRef: ElementRef) { }
 
   ngAfterViewInit(): void {
-    // Render the React component after Angular view initialization
-    render(<ReactCounter />, document.getElementById('react-counter'));
+    this.renderReactComponent();
   }
+
+  ngOnDestroy(): void {
+    ReactDOM.unmountComponentAtNode(this.reactContainer.nativeElement);
+  }
+
+  decrement(): void {
+    store.dispatch({ type: 'DECREMENT' });
+  }
+
+  private renderReactComponent(): void {
+    ReactDOM.render(
+      React.createElement(ReactCounter, {}),
+      this.reactContainer.nativeElement
+    );
+  }
+
 }
