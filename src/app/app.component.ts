@@ -1,10 +1,10 @@
-// src/app/app.component.ts
-
 import { Component, ElementRef, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
-import ReactDOM from 'react-dom';
 import React from 'react';
 import ReactCounter from './react-components/ReactCounter';
 import store from './store/store';
+
+import { createRoot } from 'react-dom/client';
+
 
 @Component({
   selector: 'app-root',
@@ -29,7 +29,8 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    ReactDOM.unmountComponentAtNode(this.reactContainer.nativeElement);
+    const root = createRoot(this.reactContainer.nativeElement);
+    root.unmount();
   }
 
   decrement(): void {
@@ -37,9 +38,9 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   }
 
   private renderReactComponent(): void {
-    ReactDOM.render(
-      React.createElement(ReactCounter, {}),
-      this.reactContainer.nativeElement
+    const root = createRoot(this.reactContainer.nativeElement);
+    root.render(
+      React.createElement(ReactCounter, {})
     );
   }
 

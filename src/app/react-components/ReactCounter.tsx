@@ -1,5 +1,3 @@
-// src/app/react-components/ReactCounter.tsx
-
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Provider } from 'react-redux';
@@ -18,11 +16,11 @@ const Counter: React.FC = () => {
     };
 
     return (
-        <div style={{"backgroundColor": "red"}}>
+        <div style={{ "backgroundColor": "red" }}>
             <h2>React Counter</h2>
-            <p style={{color: 'yellow', fontSize: "32px"}}>Count: {counter}</p>
-            <button style={{"padding": "1rem", "marginBottom": "10px", "marginLeft": "10px"}} onClick={increment}>Increment by react</button>
-            <button style={{"padding": "1rem", "marginBottom": "10px", "marginLeft": "10px"}} onClick={decrement}>Decrement by react</button>
+            <p style={{ color: 'yellow', fontSize: "32px" }}>Count: {counter}</p>
+            <button style={{ "padding": "1rem", "marginBottom": "10px", "marginLeft": "10px" }} onClick={increment}>Increment by react</button>
+            <button style={{ "padding": "1rem", "marginBottom": "10px", "marginLeft": "10px" }} onClick={decrement}>Decrement by react</button>
         </div>
     );
 };
