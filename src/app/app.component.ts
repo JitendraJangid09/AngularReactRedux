@@ -5,6 +5,9 @@ import store from './store/store';
 
 import { createRoot } from 'react-dom/client';
 
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+
 
 @Component({
   selector: 'app-root',
@@ -17,6 +20,7 @@ import { createRoot } from 'react-dom/client';
     </div>
   `,
   styles: [],
+  imports: [],
   standalone: true
 })
 export class AppComponent implements AfterViewInit, OnDestroy {
