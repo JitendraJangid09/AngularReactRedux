@@ -12,7 +12,8 @@ import { createRoot } from 'react-dom/client';
     <div style="text-align:center; background-color: green; padding: 1rem">
       <h1>Angular + React + Redux</h1>
       <div #reactContainer style="padding: 1rem"></div>
-      <button (click)="decrement()" style="padding: 1rem">Decrement by angular</button>
+      <button (click)="increment()" style="padding: 1rem; margin-left: 10px">Increment by angular</button>
+      <button (click)="decrement()" style="padding: 1rem; margin-left: 10px">Decrement by angular</button>
     </div>
   `,
   styles: [],
@@ -35,6 +36,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
   decrement(): void {
     store.dispatch({ type: 'DECREMENT' });
+  }
+
+  increment(): void {
+    store.dispatch({ type: 'INCREMENT' });
   }
 
   private renderReactComponent(): void {

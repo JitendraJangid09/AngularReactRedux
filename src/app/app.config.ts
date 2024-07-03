@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 
-import store from './store/store'; // Import the Redux store
+import store from './store/store'; 
 
 
 export const appConfig: ApplicationConfig = {
